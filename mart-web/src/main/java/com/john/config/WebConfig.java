@@ -7,6 +7,7 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.servlet.config.annotation.*;
 import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
@@ -19,6 +20,7 @@ import org.thymeleaf.templatemode.TemplateMode;
  */
 @Configuration
 @EnableWebMvc
+@PropertySource("classpath:/application.properties")
 @ComponentScan("com.john.config")
 public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware {
 

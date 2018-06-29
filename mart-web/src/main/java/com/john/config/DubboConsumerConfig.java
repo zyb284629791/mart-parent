@@ -4,6 +4,7 @@ import com.alibaba.dubbo.config.ApplicationConfig;
 import com.alibaba.dubbo.config.ConsumerConfig;
 import com.alibaba.dubbo.config.RegistryConfig;
 import com.alibaba.dubbo.config.spring.context.annotation.DubboComponentScan;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -16,6 +17,9 @@ import org.springframework.context.annotation.Configuration;
 @DubboComponentScan("com.john.mall.controller")
 @ComponentScan("com.john.mall")
 public class DubboConsumerConfig {
+
+    @Value("${zookeeper.url}")
+    private String zkUrl;
 
     @Bean
     public ApplicationConfig applicationConfig() {
@@ -34,7 +38,7 @@ public class DubboConsumerConfig {
     @Bean
     public RegistryConfig registryConfig() {
         RegistryConfig registryConfig = new RegistryConfig();
-        registryConfig.setAddress("zookeeper://192.168.117.100:2181");
+        registryConfig.setAddress(zkUrl);
 //        registryConfig.setClient("curator");
         return registryConfig;
     }
