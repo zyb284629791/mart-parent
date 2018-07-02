@@ -88,10 +88,10 @@
             <artifactId>dubbo</artifactId>
         </dependency>
 
-        <!--dubbo 引用的jar-->
+        <!--zookeeper的客服端 -->
         <dependency>
             <groupId>org.apache.curator</groupId>
-            <artifactId>curator-recipes</artifactId>
+            <artifactId>curator-framework</artifactId>
         </dependency>
 
         <!-- zookeeper -->
@@ -99,6 +99,12 @@
             <groupId>org.apache.zookeeper</groupId>
             <artifactId>zookeeper</artifactId>
         </dependency>
+
+        <!--zookeeper 的客户端-->
+        <!--<dependency>
+            <groupId>com.github.sgroschupf</groupId>
+            <artifactId>zkclient</artifactId>
+        </dependency>-->
 
         <!--servlet api-->
         <dependency>

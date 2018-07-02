@@ -23,7 +23,8 @@
         <mysql.version>5.1.35</mysql.version>
         <slf4j.version>1.7.21</slf4j.version>
         <dubbo.version>2.6.2</dubbo.version>
-        <curator-version>4.0.0</curator-version>
+        <curator.version>2.12.0</curator.version>
+        <zkclient.version>0.1</zkclient.version>
         <thymeleaf-spring.version>3.0.9.RELEASE</thymeleaf-spring.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -183,27 +184,41 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>dubbo</artifactId>
                 <version>${dubbo.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <!-- 排除传递spring依赖 -->
+                        <artifactId>spring</artifactId>
+                        <groupId>org.springframework</groupId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
-            <!--dubbo 引用的jar-->
+            <!-- zookeeper 的客户端 -->
             <dependency>
                 <groupId>org.apache.curator</groupId>
-                <artifactId>curator-recipes</artifactId>
-                <version>${curator-version}</version>
-                <exclusions>
+                <artifactId>curator-framework</artifactId>
+                <version>${curator.version}</version>
+                <!--<exclusions>
                     <exclusion>
                         <groupId>org.apache.zookeeper</groupId>
                         <artifactId>zookeeper</artifactId>
                     </exclusion>
-                </exclusions>
+                </exclusions>-->
             </dependency>
 
             <!-- zookeeper -->
             <dependency>
                 <groupId>org.apache.zookeeper</groupId>
                 <artifactId>zookeeper</artifactId>
-                <version>3.4.12</version>
+                <version>3.4.9</version>
             </dependency>
+
+            <!--zookeeper 的客户端-->
+            <!--<dependency>
+                <groupId>com.github.sgroschupf</groupId>
+                <artifactId>zkclient</artifactId>
+                <version>${zkclient.version}</version>
+            </dependency>-->
 
         </dependencies>
     </dependencyManagement>
